@@ -1,0 +1,109 @@
+set $mod Mod4
+set $HOME /home/bonathan
+
+set $red #FF6A6A
+set $yellow #FFE483
+set $green #AEECAA
+set $blue #AACDEC
+set $violett #E3AAEC
+
+font pango: 'JetBrains Mono' 8
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3-lock --nofork flameshot background.sh
+
+set $refresh_i3status killall -SIGUSR1 i3status
+exec_always --no-startup-id polybar example
+
+floating_modifier $mod
+bindsym $mod+Return exec alacritty
+bindsym $mod+Q kill
+bindsym Ctrl+space exec --no-startup-id rofi -show run
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left move left
+bindsym $mod+Down move down
+bindsym $mod+Up move up
+bindsym $mod+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split v
+
+# split in vertical orientation
+bindsym $mod+v split h
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+#
+bindsym $mod+Shift+space floating toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+p exec --no-startup-id flameshot
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# move focused container to workspace (next / prev)
+mode "resize"{
+    bindsym $mod+Left resize shrink width 10 px
+    bindsym $mod+right resize grow width 10 px
+    bindsym $mod+Up resize shrink height 10 px
+    bindsym $mod+Up resize grow height 10 px
+
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# change workspace (prev / next)
+bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+Right workspace next
+
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3-gaps?' -B 'Yes, exit i3-gaps' 'i3-msg exit'"
+
+#bindsym $mod+r resize
+
+gaps inner 30
+default_border none 
+default_floating_border none
+title_align center
+
+bindsym $mod+c exec --no-startup-id chromium-browser
+bindsym $mod+Shift+s exec --no-startup-id code
