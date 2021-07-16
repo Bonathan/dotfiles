@@ -13,6 +13,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3-lock --nofork flamesho
 
 set $refresh_i3status killall -SIGUSR1 i3status
 exec_always --no-startup-id polybar example
+exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpaper/Static/13qemgrbnfa72.jpg
 
 floating_modifier $mod
 bindsym $mod+Return exec alacritty
@@ -101,9 +102,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3-gaps?
 #bindsym $mod+r resize
 
 gaps inner 30
-default_border none 
+default_border none
 default_floating_border none
 title_align center
 
 bindsym $mod+c exec --no-startup-id chromium-browser
-bindsym $mod+Shift+s exec --no-startup-id code
+bindsym $mod+Shift+c exec --no-startup-id code
+bindsym $mod+Shift+o exec --no-startup-id codium
+bindsym $mod+Shift+s exec --no-startup-id spotify
+bindsym $mod+Shift+f exec --no-startup-id nautilus
