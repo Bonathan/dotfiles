@@ -1,3 +1,4 @@
+![screenshot](https://github.com/Jouhney/dotfiles/blob/master/screenshot.png)
 # dotfiles
 The collection of all my (current) dotfiles for my Fedora/i3-gaps setup.
 * i3-gaps
