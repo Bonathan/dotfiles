@@ -16,5 +16,5 @@ Alacritty is currently my favorite terminal emulator, just because it is so simp
 After seeing DT's video about FetchMaster I tried it out and I must say, I really like it.
 ## rofi
 DMenu got replaced by rofi because of the aesthetics.
-## Vim
-I used to daily-drive Vim but switched to VSCode / VSCodium. That said, I still use Vim regularly and plan on using it more. I installed the Dart extension, Lightline and an auto-close script with vim-plug. And of course the Seoul256 colorscheme.
+## NeoVim
+I used to daily-drive VSCode. That said, I started using Vim regularly and installed NeoVim. I installed autocompletion plugins, some colorschemes and vim-airline. To see my old configuration open the ```.vimrc``` and for the new NeoVim configuration open ```nvim/init.vim```.
