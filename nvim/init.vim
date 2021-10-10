@@ -1,88 +1,75 @@
-:set rnu
+ call plug#begin('~/.vim/autoload')
 
-call plug#begin('~/.vim/plugged')
+ "nerdtree
+ Plug 'preservim/nerdtree'
+ Plug 'Xuyuanp/nerdtree-git-plugin'
+ Plug 'ryanoasis/vim-devicons'
 
-"Completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jiangmiao/auto-pairs'
+ "autocomplete brackets, quotes, etc
+ Plug 'jiangmiao/auto-pairs'
+ Plug 'tpope/vim-surround'
 
-"Icons for NERDTree, etc
-Plug 'ryanoasis/vim-devicons'
+ "autocompletion
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"Editing
-Plug 'tpope/vim-surround'
+ "colorschemes
+ Plug 'mangeshrex/uwu.vim'
+ Plug 'gruvbox-community/gruvbox'
+ Plug 'arzg/vim-colors-xcode'
 
-"Statusline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+ "javascript
+ Plug 'maksimr/vim-jsbeautify'
+ Plug 'pangloss/vim-javascript'
 
-"Comments
-Plug 'tpope/vim-commentary'
+ "typescript
+ Plug 'leafgarland/typescript-vim'
 
-"Javascript
-Plug 'pangloss/vim-javascript'
+ "Flutter
+ Plug 'dart-lang/dart-vim-plugin'
+ Plug 'natebosch/vim-lsc'
+ Plug 'natebosch/vim-lsc-dart'
 
-"File explorer
-Plug 'scrooloose/nerdtree'
+ "beautify startup
+ Plug 'mhinz/vim-startify'
 
-"Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+ "vim statusline
+ Plug 'vim-airline/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
+ 
+ call plug#end()
 
-"Syntax checker
-Plug 'scrooloose/syntastic'
+ let g:lsc_auto_map=v:true
 
-"Beautify startup
-Plug 'mhinz/vim-startify'
+ nnoremap <C-e> :NERDTreeToggle <CR>
+ nnoremap <C-t> :tabnew <CR>
+ nnoremap <C-c> :tabclose <CR>
 
-"Colorschemes
-Plug 'mangeshrex/uwu.vim'
-Plug 'morhetz/gruvbox'
-Plug 'sonph/onehalf'
-Plug 'joshdick/onedark.vim'
-Plug 'wojciechkepka/vim-github-dark'
-Plug 'arcticicestudio/nord-vim'
-Plug 'tomasr/molokai'
-Plug 'sjl/badwolf'
+ :set rnu
 
-"markdown support
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+ :set nowrap
+ :set tabstop=2
+ :set softtabstop=2
+ :set shiftwidth=2
+ :filetype indent on
+ :set smartindent
 
+ colorscheme xcodedark
 
-call plug#end()
+ let g:airline_theme='atomic'
+ let g:airline_symbols_ascii=1
+ let g:airline_detect_spell=1
+ let g:airline_detect_spelllang=1
+ let g:airline#extensions#battery#enabled = 1
+" let g:airline_statusline_ontop=1
 
-"Config for coc
+ :set encoding=utf-8
+ :set fileencoding=utf-8
 
-let g:coc_global_extensions = ['coc-json']
-let g:coc_node_path = substitute(system('which node'), '\n', '', '')
+ " file specific indentation and additional options
+ " svelte
+ au! BufNewFile,BufRead *.svelte set ft=html
 
-"Map custom shortcuts
+ " javascript
+ 
+ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
-nnoremap <C-e> :NERDTreeToggle<CR>
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-c> :tabclose<CR>
-
-"Config for uwu
-
-:colorscheme gruvbox
-
-set t_Co=256
-let &t_ut=''
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-nmap <F5> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc 
-
-"set tabstops
-set tabstop=4
-set softtabstop=0 noexpandtab
-set shiftwidth=4
